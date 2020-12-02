@@ -5,22 +5,38 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: '中关村至臻环保',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.lightGreen,
+        fontFamily: 'Sans',
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: Scaffold(
         appBar: AppBar(
-          title: Text('中关村至臻环保股份有限公司'),
+          title: Text(
+            '中关村至臻环保股份有限公司',
+            style: TextStyle(
+              fontFamily: 'Serif',
+              letterSpacing: 5,
+              fontWeight: FontWeight.w700,
+              fontSize: 20.0,
+            ),
+          ),
           centerTitle: true,
         ),
         body: Center(
-          child: Text("中关村至臻环保"),
+          child: Text(
+            "中关村至臻环保",
+            style: TextStyle(
+              fontFamily: 'Sans',
+              letterSpacing: 5,
+              fontWeight: FontWeight.w700,
+              fontSize: 20.0,
+            ),
+          ),
         ),
         floatingActionButton: FloatingActionButton(
           child: Text('按钮'),
