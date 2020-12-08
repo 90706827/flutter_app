@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_app/basic/my_image.dart';
 
@@ -12,7 +14,38 @@ import 'file:///D:/dartProjects/flutter_app/lib/basic/my_text.dart';
 import 'basic/my_expended.dart';
 
 void main() {
-  runApp(MyApp());
+  //日志处理
+  FlutterError.onError = (FlutterErrorDetails details) {
+    reportErrorAndLog(details);
+  };
+  runZoned(
+    () => runApp(MyApp()),
+    zoneSpecification: ZoneSpecification(
+      print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
+        // 收集日志
+        collectLog(line);
+      },
+    ),
+    onError: (Object obj, StackTrace stack) {
+      var details = makeDetails(obj, stack);
+      reportErrorAndLog(details);
+    },
+  );
+}
+
+void collectLog(String line) {
+  //收集日志
+  print('Error: $line');
+}
+
+void reportErrorAndLog(FlutterErrorDetails details) {
+  //上报错误和日志逻辑
+  print('FlutterErrorDetails $details');
+}
+
+FlutterErrorDetails makeDetails(Object obj, StackTrace stack) {
+  print('makeDetails, $obj, $stack');
+  // 构建错误信息
 }
 
 class MyApp extends StatelessWidget {
