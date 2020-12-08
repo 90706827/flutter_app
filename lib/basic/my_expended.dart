@@ -60,14 +60,14 @@ class _MyExpendedState extends State<MyExpended> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: SizedBox(
-              height: 400.0,
+              height: 300.0,
               child: Flex(
                 direction: Axis.vertical,
                 children: [
                   Expanded(
                       flex: 1,
                       child: Container(
-                        padding: EdgeInsets.all(30),
+                        padding: EdgeInsets.all(5),
                         color: Colors.amber,
                         child: Text("至臻环保至臻环保至臻环保至臻环保至臻环保至臻环保至臻环保至臻环保至臻环保至臻环保"),
                       )),
@@ -76,7 +76,7 @@ class _MyExpendedState extends State<MyExpended> {
                   Expanded(
                       flex: 1,
                       child: Container(
-                        padding: EdgeInsets.all(30),
+                        padding: EdgeInsets.all(5),
                         color: Colors.lime,
                         child: Text('你我同行你我同行你我同行你我同行你我同行你我同行你我同行你我同行你我同行你我同行'),
                       ))

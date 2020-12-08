@@ -23,8 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightBlue,
       ),
-      // home: SliverTabDemoPage2(),
-      // home: new Home(title: '中关村至臻环保股份有限公司'),
+      debugShowCheckedModeBanner: false,
       home: MyHomePage(
         title: 'Flutter Demo',
       ),
@@ -43,38 +42,64 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  var routeLists = routers.keys.toList();
+
+  @override
+  void initState() {
+    super.initState();
+    startHome();
+  }
+
+  //显示2秒后跳转到HomeTabPage
+  startHome() async {
+    await Future.delayed(const Duration(milliseconds: 2000), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) => Scaffold(
+                  appBar: AppBar(
+                    title: Text(widget.title),
+                  ),
+                  body: new Container(
+                    child: new ListView.builder(
+                      itemBuilder: (context, index) {
+                        return new InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(routeLists[index]);
+                          },
+                          child: new Card(
+                            child: new Container(
+                              alignment: Alignment.centerLeft,
+                              margin: EdgeInsets.symmetric(horizontal: 10),
+                              height: 50,
+                              child: Text(routers.keys.toList()[index]),
+                            ),
+                          ),
+                        );
+                      },
+                      itemCount: routers.length,
+                    ),
+                  ),
+                  // This trailing comma makes auto-formatting nicer for build methods.
+                  floatingActionButton: FloatingActionButton(
+                    child: Text('动动'),
+                    onPressed: () {
+                      print('点击按钮');
+                    },
+                  ),
+                )),
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    var routeLists = routers.keys.toList();
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: new Container(
-        child: new ListView.builder(
-          itemBuilder: (context, index) {
-            return new InkWell(
-              onTap: () {
-                Navigator.of(context).pushNamed(routeLists[index]);
-              },
-              child: new Card(
-                child: new Container(
-                  alignment: Alignment.centerLeft,
-                  margin: EdgeInsets.symmetric(horizontal: 10),
-                  height: 50,
-                  child: Text(routers.keys.toList()[index]),
-                ),
-              ),
-            );
-          },
-          itemCount: routers.length,
-        ),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
-      floatingActionButton: FloatingActionButton(
-        child: Text('动动'),
-        onPressed: () {
-          print('点击按钮');
-        },
+      body: Image.asset(
+        "static/images/Avril.jpg",
+        width: double.infinity,
+        height: double.infinity,
+        fit: BoxFit.fill,
       ),
     );
   }
