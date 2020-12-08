@@ -1,7 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:logger/logger.dart';
 
 class MyButton extends StatelessWidget {
+  var logger = Logger();
+
   @override
   Widget build(BuildContext content) {
     return Scaffold(
@@ -13,23 +16,36 @@ class MyButton extends StatelessWidget {
 //          图标按钮
           RaisedButton(
             onPressed: () {
-              print('Raised按钮');
+              setState() {
+                logger.d('Raised 按钮');
+                print('Raised按钮');
+              }
+
+              ;
             },
-            child: Text('点击我'),
+            child: Text('Raised按钮'),
             color: Colors.lightBlue,
           ),
           // 图标按钮
           FlatButton(
             onPressed: () {
-              print('Flat按钮');
+              setState() {
+                print('Flat按钮');
+              }
+
+              ;
             },
-            child: Text('点击我'),
+            child: Text('Flat按钮'),
             color: Colors.lightBlue,
           ),
           // 图标按钮
           RaisedButton.icon(
             onPressed: () {
-              print('图标按钮');
+              setState() {
+                print('点击按钮');
+              }
+
+              ;
             },
             icon: Icon(Icons.mail),
             label: Text('mail me'),
@@ -38,7 +54,11 @@ class MyButton extends StatelessWidget {
           // 图标按钮
           IconButton(
             onPressed: () {
-              print('图标按钮');
+              setState() {
+                print('点击按钮');
+              }
+
+              ;
             },
             icon: Icon(Icons.mail),
             color: Colors.amber,

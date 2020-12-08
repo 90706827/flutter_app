@@ -47,7 +47,9 @@ class _MyColumnState extends State<MyColumn> {
           ),
           FlatButton(
               onPressed: () {
-                print('点击按钮');
+                setState(() {
+                  print('点击按钮');
+                });
               },
               color: Colors.green,
               child: Text('点击按钮')),

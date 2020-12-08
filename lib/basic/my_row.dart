@@ -23,7 +23,7 @@ class _MyRowState extends State<MyRow> {
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Expanded(child: Text('1至臻环保，你我同行！')),
+              Expanded(child: Text('至臻环保，你我同行！')),
               Expanded(child: Text('至臻环保，你我同行！')),
             ],
           ),
@@ -46,12 +46,24 @@ class _MyRowState extends State<MyRow> {
                   style: TextStyle(fontSize: 30.0),
                 ),
               ),
-              FlatButton(
-                  onPressed: () {
-                    print('点击按钮');
-                  },
-                  color: Colors.green,
-                  child: Text('点击按钮')),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Center(
+                  child: Container(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: FlatButton(
+                          onPressed: () {
+                            setState(() {
+                              print('点击按钮');
+                            });
+                          },
+                          color: Colors.green,
+                          child: Text('点击按钮')),
+                    ),
+                  ),
+                ),
+              ),
             ],
           ),
         ],
