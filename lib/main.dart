@@ -1,6 +1,12 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/basic/page/my_page_routes.dart';
 
+import 'basic/my_card.dart';
+import 'basic/my_divider.dart';
+import 'basic/my_list.dart';
 import 'basic/my_button.dart';
 import 'basic/my_column.dart';
 import 'basic/my_container.dart';
@@ -10,47 +16,26 @@ import 'basic/my_image.dart';
 import 'basic/my_padding.dart';
 import 'basic/my_row.dart';
 import 'basic/my_text.dart';
-import 'package:logger/logger.dart';
 
-var logger = Logger(
-  // Use the default LogFilter (-> only log in debug mode)
-  filter: null,
-  // Use the PrettyPrinter to format and print log
-  printer:PrettyPrinter(
-      methodCount: 2, // number of method calls to be displayed
-      errorMethodCount: 8, // number of method calls if stacktrace is provided
-      lineLength: 120, // width of the output
-      colors: true, // Colorful log messages
-      printEmojis: true, // Print an emoji for each log message
-      printTime: true // Should each log print contain a timestamp
-  ),
-  // Use the default LogOutput (-> send everything to console)
-  output: null,
-);
 
-var loggerNoStack = Logger(
-  printer: PrettyPrinter(methodCount: 0),
-);
 void main() {
-  logger.d("message");
-  runApp(MyApp());
   //日志处理
-  // FlutterError.onError = (FlutterErrorDetails details) {
-  //   reportErrorAndLog(details);
-  // };
-  // runZoned(
-  //   () => runApp(MyApp()),
-  //   zoneSpecification: ZoneSpecification(
-  //     print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
-  //       // 收集日志
-  //       collectLog(line);
-  //     },
-  //   ),
-  //   onError: (Object obj, StackTrace stack) {
-  //     var details = makeDetails(obj, stack);
-  //     reportErrorAndLog(details);
-  //   },
-  // );
+  FlutterError.onError = (FlutterErrorDetails details) {
+    reportErrorAndLog(details);
+  };
+  runZoned(
+    () => runApp(MyApp()),
+    zoneSpecification: ZoneSpecification(
+      print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
+        // 收集日志
+        collectLog(line);
+      },
+    ),
+    onError: (Object obj, StackTrace stack) {
+      var details = makeDetails(obj, stack);
+      reportErrorAndLog(details);
+    },
+  );
 }
 
 void collectLog(String line) {
@@ -95,11 +80,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-// [isWriteFile] can null,if you want to write log set to true,default false.
-// [tag] can null.default RLogger.
-// [filePath] not null your file path.
-// [fileName] can null. default yyyy_MM_dd.
   var routeLists = routers.keys.toList();
 
   @override
@@ -140,17 +120,12 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   // This trailing comma makes auto-formatting nicer for build methods.
                   floatingActionButton: FloatingActionButton(
+                    backgroundColor: Colors.cyan,
                     child: Text('动动'),
                     onPressed: () {
-                      if(mounted){
+                      if (mounted) {
                         setState(() {
-                          logger.d('Log message with 2 methods');
-                          loggerNoStack.i('Info message');
-                          loggerNoStack.w('Just a warning!');
-                          logger.e('Error! Something bad happened', 'Test Error');
-                          loggerNoStack.v({'key': 5, 'value': 'something'});
-                          Logger(printer: SimplePrinter(colors: true)).v('boom');
-                          debugPrint('点击按钮');
+                          print('点击按钮');
                         });
                       }
                     },
@@ -200,5 +175,17 @@ Map<String, WidgetBuilder> routers = {
   },
   "弹性布局（Expanded）": (context) {
     return MyExpended();
+  },
+  '线条': (context) {
+    return MyDivider();
+  },
+  '卡片': (context) {
+    return MyCard();
+  },
+  '列表': (context) {
+    return MyList();
+  },
+  '多页面': (context) {
+    return MyPageRoutes();
   }
 };

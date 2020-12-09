@@ -9,6 +9,16 @@ class MyImage extends StatelessWidget {
       ),
       body: Column(
         children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(
+                left: 1.0, top: 10.0, right: 1.0, bottom: 10.0),
+            child: Center(
+              child: CircleAvatar(
+                backgroundImage: AssetImage('static/images/Avril.jpg'),
+                radius: 50,
+              ),
+            ),
+          ),
           // 加载网络图片
           Image(
             image: NetworkImage(
