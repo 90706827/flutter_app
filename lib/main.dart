@@ -2,21 +2,24 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_app/basic/page/my_page_routes.dart';
+import 'package:flutter_app/basic/my_theme.dart';
+import 'package:gradient_app_bar/gradient_app_bar.dart';
 
-import 'basic/my_card.dart';
-import 'basic/my_divider.dart';
-import 'basic/my_list.dart';
 import 'basic/my_button.dart';
+import 'basic/my_card.dart';
 import 'basic/my_column.dart';
 import 'basic/my_container.dart';
+import 'basic/my_divider.dart';
 import 'basic/my_expended.dart';
+import 'basic/my_http_request.dart';
 import 'basic/my_icon.dart';
 import 'basic/my_image.dart';
+import 'basic/my_list.dart';
 import 'basic/my_padding.dart';
 import 'basic/my_row.dart';
 import 'basic/my_text.dart';
-
+import 'basic/page/my_page_routes.dart';
+import 'login/login_page.dart';
 
 void main() {
   //日志处理
@@ -95,8 +98,9 @@ class _MyHomePageState extends State<MyHomePage> {
         context,
         MaterialPageRoute(
             builder: (context) => Scaffold(
-                  appBar: AppBar(
+                  appBar: GradientAppBar(
                     title: Text(widget.title),
+                    gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
                   ),
                   body: new Container(
                     child: new ListView.builder(
@@ -138,12 +142,45 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Image.asset(
-        "static/images/Avril.jpg",
-        width: double.infinity,
-        height: double.infinity,
-        fit: BoxFit.fill,
+      appBar: GradientAppBar(
+        title: Text("Flutter"),
+        gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
       ),
+      body: Container(
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                stops: [
+              0.2,
+              0.5,
+              0.7,
+              1
+            ],
+                colors: [
+              Colors.red,
+              Colors.purple,
+              Colors.yellow,
+              Colors.blue
+            ])),
+        child: Center(
+          child: Text(
+            'Hello Flutter!',
+            style: TextStyle(
+              fontSize: 48.0,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
+
+      // body: Image.asset(
+      //   "static/images/Avril.jpg",
+      //   width: double.infinity,
+      //   height: double.infinity,
+      //   fit: BoxFit.fill,
+      // ),
     );
   }
 }
@@ -187,5 +224,14 @@ Map<String, WidgetBuilder> routers = {
   },
   '多页面': (context) {
     return MyPageRoutes();
+  },
+  'Http请求': (context) {
+    return MyHttpRequest();
+  },
+  'Login 登录': (context) {
+    return LoginPage();
+  },
+  '切换主题': (context) {
+    return MyTheme();
   }
 };
