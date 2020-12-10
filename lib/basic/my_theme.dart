@@ -9,7 +9,7 @@ class MyTheme extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(providers: [
       ChangeNotifierProvider(
-        builder: ThemeChanger(ThemeData.dark()),
+        // builder: ThemeChanger(ThemeData.dark()),
         child: MaterialAppWithTheme(),
       )
     ]);
