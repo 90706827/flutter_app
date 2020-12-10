@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_app/basic/my_change_notifier.dart';
+import 'package:flutter_app/basic/my_mobx.dart';
 import 'package:flutter_app/basic/my_theme.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
@@ -233,5 +235,11 @@ Map<String, WidgetBuilder> routers = {
   },
   '切换主题': (context) {
     return MyTheme();
+  },
+  '状态管理': (context) {
+    return MyChangeNotifier();
+  },
+  'Mobx': (context) {
+    return MyMobx();
   }
 };
