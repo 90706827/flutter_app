@@ -10,8 +10,6 @@ class MyMobx extends StatefulWidget {
 class _MyMobxState extends State<MyMobx> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: MobxPage(),
-    );
+    return MobxPage();
   }
 }

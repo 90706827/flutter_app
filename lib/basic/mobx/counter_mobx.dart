@@ -1,6 +1,6 @@
 import 'package:mobx/mobx.dart';
 
-part 'counter.g.dart';
+part 'counter_mobx.g.dart';
 
 class Counter = CounterMobx with _$Counter;
 

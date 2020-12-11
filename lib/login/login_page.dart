@@ -42,6 +42,7 @@ class LoginPage extends StatelessWidget {
                       Container(
                         alignment: Alignment.centerRight,
                         child: FlatButton(
+                          onPressed: (){},
                           child: Text("Forgot Password?"),
                         ),
                       ),

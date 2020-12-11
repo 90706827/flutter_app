@@ -11,7 +11,6 @@ class HttpService {
     Response res = await delete("$postsUrl/$id");
 
     if (res.statusCode == 200) {
-      print("Delete Post Success!");
     }
   }
 

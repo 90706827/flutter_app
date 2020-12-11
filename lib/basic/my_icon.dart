@@ -9,10 +9,12 @@ class MyIcon extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Icon(
-            Icons.airport_shuttle,
-            color: Colors.deepOrange,
-            size: 50,
+          Center(
+            child: Icon(
+              Icons.airport_shuttle,
+              color: Colors.deepOrange,
+              size: 50,
+            ),
           ),
         ],
       ),

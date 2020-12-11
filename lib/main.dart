@@ -4,7 +4,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/basic/my_change_notifier.dart';
 import 'package:flutter_app/basic/my_mobx.dart';
+import 'package:flutter_app/basic/my_text.dart';
 import 'package:flutter_app/basic/my_theme.dart';
+import 'package:flutter_app/basic/stepper/account_page.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 import 'basic/my_button.dart';
@@ -19,7 +21,6 @@ import 'basic/my_image.dart';
 import 'basic/my_list.dart';
 import 'basic/my_padding.dart';
 import 'basic/my_row.dart';
-import 'basic/my_text.dart';
 import 'basic/page/my_page_routes.dart';
 import 'login/login_page.dart';
 
@@ -131,7 +132,6 @@ class _MyHomePageState extends State<MyHomePage> {
                     onPressed: () {
                       if (mounted) {
                         setState(() {
-                          print('点击按钮');
                         });
                       }
                     },
@@ -241,5 +241,8 @@ Map<String, WidgetBuilder> routers = {
   },
   'Mobx': (context) {
     return MyMobx();
+  },
+  'stepper表单': (context) {
+    return AccountPage();
   }
 };

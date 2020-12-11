@@ -55,7 +55,6 @@ class _MyRowState extends State<MyRow> {
                       child: FlatButton(
                           onPressed: () {
                             setState(() {
-                              print('点击按钮');
                             });
                           },
                           color: Colors.green,
