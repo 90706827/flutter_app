@@ -3,10 +3,17 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_app/basic/my_change_notifier.dart';
+import 'package:flutter_app/basic/my_charts.dart';
+import 'package:flutter_app/basic/my_form.dart';
+import 'package:flutter_app/basic/my_material_banner.dart';
 import 'package:flutter_app/basic/my_mobx.dart';
+import 'package:flutter_app/basic/my_panorama.dart';
+import 'package:flutter_app/basic/my_reorderable_list_view.dart';
+import 'package:flutter_app/basic/my_share.dart';
+import 'package:flutter_app/basic/my_speed_dial.dart';
 import 'package:flutter_app/basic/my_text.dart';
 import 'package:flutter_app/basic/my_theme.dart';
-import 'package:flutter_app/basic/stepper/account_page.dart';
+import 'package:flutter_app/basic/my_web_veiw.dart';
 import 'package:gradient_app_bar/gradient_app_bar.dart';
 
 import 'basic/my_button.dart';
@@ -15,6 +22,7 @@ import 'basic/my_column.dart';
 import 'basic/my_container.dart';
 import 'basic/my_divider.dart';
 import 'basic/my_expended.dart';
+import 'basic/my_flutter_toast.dart';
 import 'basic/my_http_request.dart';
 import 'basic/my_icon.dart';
 import 'basic/my_image.dart';
@@ -25,38 +33,7 @@ import 'basic/page/my_page_routes.dart';
 import 'login/login_page.dart';
 
 void main() {
-  //日志处理
-  FlutterError.onError = (FlutterErrorDetails details) {
-    reportErrorAndLog(details);
-  };
-  runZoned(
-    () => runApp(MyApp()),
-    zoneSpecification: ZoneSpecification(
-      print: (Zone self, ZoneDelegate parent, Zone zone, String line) {
-        // 收集日志
-        collectLog(line);
-      },
-    ),
-    onError: (Object obj, StackTrace stack) {
-      var details = makeDetails(obj, stack);
-      reportErrorAndLog(details);
-    },
-  );
-}
-
-void collectLog(String line) {
-  //收集日志
-  print('Error: $line');
-}
-
-void reportErrorAndLog(FlutterErrorDetails details) {
-  //上报错误和日志逻辑
-  print('FlutterErrorDetails $details');
-}
-
-FlutterErrorDetails makeDetails(Object obj, StackTrace stack) {
-  print('makeDetails, $obj, $stack');
-  // 构建错误信息
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -96,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   //显示2秒后跳转到HomeTabPage
   startHome() async {
-    await Future.delayed(const Duration(milliseconds: 2000), () {
+    await Future.delayed(const Duration(milliseconds: 100), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -131,8 +108,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     child: Text('动动'),
                     onPressed: () {
                       if (mounted) {
-                        setState(() {
-                        });
+                        setState(() {});
                       }
                     },
                   ),
@@ -165,15 +141,19 @@ class _MyHomePageState extends State<MyHomePage> {
               Colors.yellow,
               Colors.blue
             ])),
-        child: Center(
-          child: Text(
-            'Hello Flutter!',
-            style: TextStyle(
-              fontSize: 48.0,
-              fontWeight: FontWeight.bold,
-              color: Colors.white,
+        child: Column(
+          children: [
+            Center(
+              child: Text(
+                'Hello Flutter!',
+                style: TextStyle(
+                  fontSize: 48.0,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
             ),
-          ),
+          ],
         ),
       ),
 
@@ -242,7 +222,31 @@ Map<String, WidgetBuilder> routers = {
   'Mobx': (context) {
     return MyMobx();
   },
-  'stepper表单': (context) {
-    return AccountPage();
+  '表单': (context) {
+    return MyForm();
+  },
+  'WebView': (context) {
+    return MyWebVeiw();
+  },
+  'SpeedDial': (context) {
+    return MySpeedDial();
+  },
+  '图形(Charts)': (context) {
+    return MyCharts();
+  },
+  'Share': (context) {
+    return MyShare();
+  },
+  '全景图像': (context) {
+    return MyPanorama();
+  },
+  'MaterialBanner': (context) {
+    return MyMaterialBanner();
+  },
+  'FlutterToast': (context) {
+    return MyFlutterToast();
+  },
+  '拖拽试图': (context) {
+    return MyReorderableListView();
   }
 };

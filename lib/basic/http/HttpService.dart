@@ -9,7 +9,7 @@ class HttpService {
 
   Future<void> deletePost(int id) async {
     Response res = await delete("$postsUrl/$id");
-
+    print(res.body);
     if (res.statusCode == 200) {
     }
   }
