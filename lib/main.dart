@@ -61,91 +61,91 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
-}
 
-Map<String, WidgetBuilder> routers = {
-  "文本": (context) {
-    return MyText();
-  },
-  "按钮": (context) {
-    return MyButton();
-  },
-  "图标": (context) {
-    return MyIcon();
-  },
-  "图片": (context) {
-    return MyImage();
-  },
-  "行": (context) {
-    return MyRow();
-  },
-  "列": (context) {
-    return MyColumn();
-  },
-  "Padding": (context) {
-    return MyPadding();
-  },
-  "Container": (context) {
-    return MyContainer();
-  },
-  "弹性布局（Expanded）": (context) {
-    return MyExpended();
-  },
-  '线条': (context) {
-    return MyDivider();
-  },
-  '卡片': (context) {
-    return MyCard();
-  },
-  '列表': (context) {
-    return MyList();
-  },
-  '多页面': (context) {
-    return MyPageRoutes();
-  },
-  'Http请求': (context) {
-    return MyHttpRequest();
-  },
-  'Login 登录': (context) {
-    return LoginPage();
-  },
-  '切换主题': (context) {
-    return MyTheme();
-  },
-  '状态管理': (context) {
-    return MyChangeNotifier();
-  },
-  'Mobx': (context) {
-    return MyMobx();
-  },
-  '表单': (context) {
-    return MyForm();
-  },
-  'WebView': (context) {
-    return MyWebVeiw();
-  },
-  'SpeedDial': (context) {
-    return MySpeedDial();
-  },
-  '图形(Charts)': (context) {
-    return MyCharts();
-  },
-  'Share': (context) {
-    return MyShare();
-  },
-  '全景图像': (context) {
-    return MyPanorama();
-  },
-  'MaterialBanner': (context) {
-    return MyMaterialBanner();
-  },
-  'FlutterToast': (context) {
-    return MyFlutterToast();
-  },
-  '拖拽试图': (context) {
-    return MyReorderableListView();
-  },
-  '手表效果图': (context) {
-    return MyWatchListPage();
-  }
-};
+  static Map<String, WidgetBuilder> get routers => {
+        "文本": (context) {
+          return MyText();
+        },
+        "按钮": (context) {
+          return MyButton();
+        },
+        "图标": (context) {
+          return MyIcon();
+        },
+        "图片": (context) {
+          return MyImage();
+        },
+        "行": (context) {
+          return MyRow();
+        },
+        "列": (context) {
+          return MyColumn();
+        },
+        "Padding": (context) {
+          return MyPadding();
+        },
+        "Container": (context) {
+          return MyContainer();
+        },
+        "弹性布局（Expanded）": (context) {
+          return MyExpended();
+        },
+        '线条': (context) {
+          return MyDivider();
+        },
+        '卡片': (context) {
+          return MyCard();
+        },
+        '列表': (context) {
+          return MyList();
+        },
+        '多页面': (context) {
+          return MyPageRoutes();
+        },
+        'Http请求': (context) {
+          return MyHttpRequest();
+        },
+        'Login 登录': (context) {
+          return LoginPage();
+        },
+        '切换主题': (context) {
+          return MyTheme();
+        },
+        '状态管理': (context) {
+          return MyChangeNotifier();
+        },
+        'Mobx': (context) {
+          return MyMobx();
+        },
+        '表单': (context) {
+          return MyForm();
+        },
+        'WebView': (context) {
+          return MyWebVeiw();
+        },
+        'SpeedDial': (context) {
+          return MySpeedDial();
+        },
+        '图形(Charts)': (context) {
+          return MyCharts();
+        },
+        'Share': (context) {
+          return MyShare();
+        },
+        '全景图像': (context) {
+          return MyPanorama();
+        },
+        'MaterialBanner': (context) {
+          return MyMaterialBanner();
+        },
+        'FlutterToast': (context) {
+          return MyFlutterToast();
+        },
+        '拖拽试图': (context) {
+          return MyReorderableListView();
+        },
+        '手表效果图': (context) {
+          return MyWatchListPage();
+        }
+      };
+}

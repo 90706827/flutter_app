@@ -4,7 +4,7 @@ import 'package:flutter_app/basic/watch/model/WatchListItem.dart';
 class WatchSmallCard extends StatelessWidget {
   final WatchListItem watchListItem;
 
-  WatchSmallCard({this.watchListItem});
+  WatchSmallCard({@required this.watchListItem});
 
   @override
   Widget build(BuildContext context) {

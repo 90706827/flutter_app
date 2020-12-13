@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_app/presentation/user_service.dart';
-import 'package:gradient_app_bar/gradient_app_bar.dart';
+import 'package:flutter_app/tab/tab_page.dart';
 import 'package:provider/provider.dart';
 
 import 'User.dart';
@@ -41,25 +41,42 @@ class _LoginPageState extends State<LoginPage> {
         child: Form(
           key: _formKey,
           autovalidateMode: AutovalidateMode.always,
-          child: Column(
-            children: [
-              TextFormField(
-                  controller: _usernameTextEditingController,
-                  decoration: InputDecoration(labelText: "Username"),
-                  validator: (String value) =>
-                      _validateFormField(value, "Username")),
-              TextFormField(
-                  controller: _passwordTextEditingController,
-                  obscureText: true,
-                  decoration: InputDecoration(labelText: "Password"),
-                  validator: (String value) =>
-                      _validateFormField(value, "Password")),
-              FlatButton(
-                onPressed: () => _onFormSaved(context,
-                    User(username: _usernameTextEditingController.text)),
-                child: Text("Login"),
-              )
-            ],
+          child: Padding(
+            padding: const EdgeInsets.only(left: 30, right: 30),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 10),
+                  child: TextFormField(
+                    controller: _usernameTextEditingController,
+                    decoration: InputDecoration(labelText: "账户名称"),
+                    validator: (String value) =>
+                        _validateFormField(value, "账户名称"),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: TextFormField(
+                    controller: _passwordTextEditingController,
+                    obscureText: true,
+                    decoration: InputDecoration(labelText: "账户密码"),
+                    validator: (String value) =>
+                        _validateFormField(value, "账户密码"),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 20),
+                  child: FlatButton(
+                    color: Colors.blue,
+                    onPressed: () => _onFormSaved(context,
+                        User(username: _usernameTextEditingController.text)),
+                    child: Text("登录"),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -68,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
 
   String _validateFormField(String value, String fieldName) {
     if (value.isEmpty) {
-      return "$fieldName cannot be empty.";
+      return "$fieldName 不能为空.";
     }
     return null;
   }
@@ -83,46 +100,14 @@ class _LoginPageState extends State<LoginPage> {
 
   _onFormSaved(BuildContext context, User user) {
     if (_formKey.currentState.validate()) {
-      var routeLists = widget.routers.keys.toList();
       Provider.of<UserService>(context, listen: false).setUser(user);
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
-          builder: (context) => Scaffold(
-            appBar: GradientAppBar(
-              title: Text(widget.title),
-              gradient: LinearGradient(colors: [Colors.red, Colors.blue]),
-            ),
-            body: new Container(
-              child: new ListView.builder(
-                itemBuilder: (context, index) {
-                  return new InkWell(
-                    onTap: () {
-                      Navigator.of(context).pushNamed(routeLists[index]);
-                    },
-                    child: new Card(
-                      child: new Container(
-                        alignment: Alignment.centerLeft,
-                        margin: EdgeInsets.symmetric(horizontal: 10),
-                        height: 50,
-                        child: Text(widget.routers.keys.toList()[index]),
-                      ),
-                    ),
-                  );
-                },
-                itemCount: widget.routers.length,
-              ),
-            ),
-            // This trailing comma makes auto-formatting nicer for build methods.
-            floatingActionButton: FloatingActionButton(
-              backgroundColor: Colors.cyan,
-              child: Text('动动'),
-              onPressed: () {
-                if (mounted) {
-                  setState(() {});
-                }
-              },
-            ),
-          ),
+          builder: (context) => TabPage(),
+          // builder: (context) => BasePage(
+          //   title: widget.title,
+          //   routers: widget.routers,
+          // ),
         ),
       );
     }

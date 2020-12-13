@@ -5,7 +5,7 @@ import 'model/WatchListItem.dart';
 class WatchLargeCard extends StatelessWidget {
   final WatchListItem watchListItem;
 
-  WatchLargeCard({Key key, this.watchListItem}) : super(key: key);
+  WatchLargeCard({Key key, @required this.watchListItem}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +47,8 @@ class WatchLargeCard extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Apple Watch 5",
+              Text(
+                "Apple Watch 5",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 15,
@@ -80,5 +81,4 @@ class WatchLargeCard extends StatelessWidget {
       ),
     );
   }
-
 }

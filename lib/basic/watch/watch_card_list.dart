@@ -6,7 +6,7 @@ import 'package:visibility_detector/visibility_detector.dart';
 class WatchCardList extends StatefulWidget {
   final List<WatchListItem> listItems;
 
-  WatchCardList({Key key, this.listItems}) : super(key: key);
+  WatchCardList({Key key, @required this.listItems}) : super(key: key);
 
   @override
   _WatchCardListState createState() => _WatchCardListState();
