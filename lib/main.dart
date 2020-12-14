@@ -8,6 +8,7 @@ import 'package:flutter_app/basic/my_mobx.dart';
 import 'package:flutter_app/basic/my_panorama.dart';
 import 'package:flutter_app/basic/my_reorderable_list_view.dart';
 import 'package:flutter_app/basic/my_share.dart';
+import 'package:flutter_app/basic/my_spark_page.dart';
 import 'package:flutter_app/basic/my_speed_dial.dart';
 import 'package:flutter_app/basic/my_text.dart';
 import 'package:flutter_app/basic/my_theme.dart';
@@ -54,7 +55,6 @@ class MyApp extends StatelessWidget {
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
         home: LoginPage(
-          title: 'Flutter Demo',
           routers: routers,
         ),
         routes: routers,
@@ -146,6 +146,9 @@ class MyApp extends StatelessWidget {
         },
         '手表效果图': (context) {
           return MyWatchListPage();
+        },
+        '迷你图': (context) {
+          return MySparkPage();
         }
       };
 }

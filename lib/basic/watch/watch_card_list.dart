@@ -24,13 +24,13 @@ class _WatchCardListState extends State<WatchCardList> {
         itemBuilder: (context, index) => VisibilityDetector(
           key: widget.listItems[index].key,
           onVisibilityChanged: (VisibilityInfo info) {
-            if (info.visibleBounds.width > 170) {
+            if (mounted) {
               setState(() {
-                widget.listItems[index].shouldScale = true;
-              });
-            } else {
-              setState(() {
-                widget.listItems[index].shouldScale = false;
+                if (info.visibleBounds.width > 170) {
+                  widget.listItems[index].shouldScale = true;
+                } else {
+                  widget.listItems[index].shouldScale = false;
+                }
               });
             }
           },

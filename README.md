@@ -16,8 +16,7 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 - flutter_launcher_icons
 flutter pub run flutter_launcher_icons:main
-
-
+https://github.com/ducafecat/flutter_learn_news.git
 ## demo
 ### ThemeData
   Brightness brightness, //深色还是浅色

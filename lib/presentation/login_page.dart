@@ -6,9 +6,7 @@ import 'package:provider/provider.dart';
 import 'User.dart';
 
 class LoginPage extends StatefulWidget {
-  LoginPage({Key key, @required this.title, @required this.routers})
-      : super(key: key);
-  final String title;
+  LoginPage({Key key, @required this.routers}) : super(key: key);
   final Map<String, WidgetBuilder> routers;
 
   @override
@@ -33,9 +31,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Form(
